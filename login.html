@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <form action="" id="login-form">
+            <div id="innerform">
+                <p id="headtext">Welcome to localStorage</p>
+                <p id="subtext">Welcome back and store within your browser!</p>
+                <!-- <input type="text" placeholder="Fullname" id="fullname"> <br> -->
+                <input type="email" placeholder="Email address" id="email"> <br>
+                <input type="password" placeholder="Password" id="password"> <br>
+                <button type="submit" id="submit">Log-in</button>
+                <p id="logintext">Don't have an account? <a href="/index.html">Signup</a></p>
+            </div>
+        </form>
+    </center>
+    <script>  
+      // Retrieve login details from local storage
+      document.getElementById("login-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get form values
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Retrieve from local storage
+        const userDetails = JSON.parse(localStorage.getItem(email));
+
+        if (userDetails && userDetails.password === password) {
+          alert(`Welcome ${userDetails.fullname}!`);
+          // Redirect to logged-in page
+        } else {
+          alert("Invalid email or password!");
+        }
+
+        // Clear form
+        document.getElementById("login-form").reset();
+      });
+    </script>
+</body>
+</html>
