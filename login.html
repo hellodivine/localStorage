@@ -21,25 +21,20 @@
         </form>
     </center>
     <script>  
-      // Retrieve login details from local storage
       document.getElementById("login-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
 
-        // Get form values
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
-        // Retrieve from local storage
         const userDetails = JSON.parse(localStorage.getItem(email));
 
         if (userDetails && userDetails.password === password) {
           alert(`Welcome ${userDetails.fullname}!`);
-          // Redirect to logged-in page
         } else {
           alert("Invalid email or password!");
         }
 
-        // Clear form
         document.getElementById("login-form").reset();
       });
     </script>

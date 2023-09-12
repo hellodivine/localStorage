@@ -22,19 +22,18 @@
     </center>
 
     <script>
-      // Save sign-up details to local storage
-      document.getElementById("signup-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent form submission
+        
+      document.getElementById("signup-form").addEventListener("submit", 
+      
+      function(event) {
+        event.preventDefault();
 
-        // Get form values
         const fullname = document.getElementById("fullname").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
-        // Save to local storage
         localStorage.setItem(email, JSON.stringify({ fullname, password }));
 
-        // Clear form
         document.getElementById("signup-form").reset();
 
         alert("Sign-up successful!");
